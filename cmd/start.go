@@ -9,12 +9,12 @@ import (
 	"time"
 
 	"github.com/mitchellh/go-homedir"
-	"github.com/mosuka/cete/client"
-	"github.com/mosuka/cete/log"
-	"github.com/mosuka/cete/protobuf"
-	"github.com/mosuka/cete/server"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"github.com/vniche/cete/client"
+	"github.com/vniche/cete/log"
+	"github.com/vniche/cete/protobuf"
+	"github.com/vniche/cete/server"
 )
 
 var (

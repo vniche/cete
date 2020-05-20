@@ -7,7 +7,7 @@ import "protoc-gen-swagger/options/annotations.proto";
 
 package kvs;
 
-option go_package = "github.com/mosuka/cete/protobuf";
+option go_package = "github.com/vniche/cete/protobuf";
 
 service KVS {
     rpc LivenessCheck (google.protobuf.Empty) returns (LivenessCheckResponse) {

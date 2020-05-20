@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	"github.com/mosuka/cete/protobuf"
+	"github.com/vniche/cete/protobuf"
 )
 
 var (

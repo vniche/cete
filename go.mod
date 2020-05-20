@@ -1,4 +1,4 @@
-module github.com/mosuka/cete
+module github.com/vniche/cete
 
 go 1.14
 

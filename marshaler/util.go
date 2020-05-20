@@ -5,8 +5,8 @@ import (
 	"reflect"
 
 	"github.com/golang/protobuf/ptypes/any"
-	"github.com/mosuka/cete/protobuf"
-	"github.com/mosuka/cete/registry"
+	"github.com/vniche/cete/protobuf"
+	"github.com/vniche/cete/registry"
 )
 
 func init() {

@@ -10,9 +10,9 @@ import (
 
 	"github.com/golang/protobuf/proto"
 	"github.com/hashicorp/raft"
-	"github.com/mosuka/cete/marshaler"
-	"github.com/mosuka/cete/protobuf"
-	"github.com/mosuka/cete/storage"
+	"github.com/vniche/cete/marshaler"
+	"github.com/vniche/cete/protobuf"
+	"github.com/vniche/cete/storage"
 	"go.uber.org/zap"
 )
 

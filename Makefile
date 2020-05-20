@@ -7,7 +7,7 @@ CGO_LDFLAGS ?=
 BUILD_TAGS ?=
 VERSION ?=
 BIN_EXT ?=
-DOCKER_REPOSITORY ?= mosuka
+DOCKER_REPOSITORY ?= vniche
 
 PACKAGES = $(shell $(GO) list ./... | grep -v '/vendor/')
 
@@ -28,7 +28,7 @@ endif
 ifeq ($(VERSION),)
   VERSION = latest
 endif
-LDFLAGS = -ldflags "-X \"github.com/mosuka/cete/version.Version=$(VERSION)\""
+LDFLAGS = -ldflags "-X \"github.com/vniche/cete/version.Version=$(VERSION)\""
 
 ifeq ($(GOOS),windows)
   BIN_EXT = .exe

@@ -4,13 +4,13 @@ ARG VERSION
 
 ENV GOPATH /go
 
-COPY . ${GOPATH}/src/github.com/mosuka/cete
+COPY . ${GOPATH}/src/github.com/vniche/cete
 
 RUN apk update && \
     apk upgrade && \
     apk add git && \
     apk add make && \
-    cd ${GOPATH}/src/github.com/mosuka/cete && \
+    cd ${GOPATH}/src/github.com/vniche/cete && \
     make \
       GOOS=linux \
       GOARCH=amd64 \
@@ -26,8 +26,8 @@ RUN apk update && \
     apk upgrade && \
     rm -rf /var/cache/apk/*
 
-COPY --from=0 /go/src/github.com/mosuka/cete/bin/* /usr/bin/
-COPY --from=0 /go/src/github.com/mosuka/cete/docker-entrypoint.sh /usr/bin/
+COPY --from=0 /go/src/github.com/vniche/cete/bin/* /usr/bin/
+COPY --from=0 /go/src/github.com/vniche/cete/docker-entrypoint.sh /usr/bin/
 
 EXPOSE 7000 8000 9000
 

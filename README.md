@@ -21,9 +21,9 @@ Cete makes it easy bringing up a cluster of BadgerDB (a cete of badgers) .
 When you satisfied dependencies, let's build Cete for Linux as following:
 
 ```bash
-$ mkdir -p ${GOPATH}/src/github.com/mosuka
-$ cd ${GOPATH}/src/github.com/mosuka
-$ git clone https://github.com/mosuka/cete.git
+$ mkdir -p ${GOPATH}/src/github.com/vniche
+$ cd ${GOPATH}/src/github.com/vniche
+$ git clone https://github.com/vniche/cete.git
 $ cd cete
 $ make build
 ```
@@ -341,10 +341,10 @@ $ make docker-build
 You can also use the Docker container image already registered in docker.io like so:
 
 ```bash
-$ docker pull mosuka/cete:latest
+$ docker pull vniche/cete:latest
 ```
 
-See https://hub.docker.com/r/mosuka/cete/tags/
+See https://hub.docker.com/r/vniche/cete/tags/
 
 
 ### Pulling Cete Docker container image from docker.io
@@ -352,7 +352,7 @@ See https://hub.docker.com/r/mosuka/cete/tags/
 You can also use the Docker container image already registered in docker.io like so:
 
 ```bash
-$ docker pull mosuka/cete:latest
+$ docker pull vniche/cete:latest
 ```
 
 
@@ -365,7 +365,7 @@ $ docker run --rm --name cete-node1 \
     -p 7000:7000 \
     -p 8000:8000 \
     -p 9000:9000 \
-    mosuka/cete:latest cete start \
+    vniche/cete:latest cete start \
       --id=node1 \
       --raft-address=:7000 \
       --grpc-address=:9000 \

@@ -10,11 +10,11 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/mitchellh/go-homedir"
-	"github.com/mosuka/cete/client"
-	"github.com/mosuka/cete/marshaler"
-	"github.com/mosuka/cete/protobuf"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"github.com/vniche/cete/client"
+	"github.com/vniche/cete/marshaler"
+	"github.com/vniche/cete/protobuf"
 )
 
 var (

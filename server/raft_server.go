@@ -14,10 +14,10 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/any"
 	"github.com/hashicorp/raft"
-	"github.com/mosuka/cete/errors"
-	"github.com/mosuka/cete/marshaler"
-	"github.com/mosuka/cete/metric"
-	"github.com/mosuka/cete/protobuf"
+	"github.com/vniche/cete/errors"
+	"github.com/vniche/cete/marshaler"
+	"github.com/vniche/cete/metric"
+	"github.com/vniche/cete/protobuf"
 	"go.uber.org/zap"
 )
 

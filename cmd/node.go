@@ -7,9 +7,9 @@ import (
 	"os"
 
 	"github.com/mitchellh/go-homedir"
-	"github.com/mosuka/cete/client"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"github.com/vniche/cete/client"
 )
 
 var (

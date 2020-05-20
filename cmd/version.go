@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/mosuka/cete/version"
 	"github.com/spf13/cobra"
+	"github.com/vniche/cete/version"
 )
 
 var (

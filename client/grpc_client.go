@@ -7,8 +7,8 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
-	"github.com/mosuka/cete/errors"
-	"github.com/mosuka/cete/protobuf"
+	"github.com/vniche/cete/errors"
+	"github.com/vniche/cete/protobuf"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/credentials"

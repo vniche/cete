@@ -5,8 +5,8 @@ import (
 
 	"github.com/dgraph-io/badger/v2"
 	"github.com/dgraph-io/badger/v2/y"
-	"github.com/mosuka/cete/errors"
-	"github.com/mosuka/cete/protobuf"
+	"github.com/vniche/cete/errors"
+	"github.com/vniche/cete/protobuf"
 	"go.uber.org/zap"
 )
 

@@ -9,8 +9,8 @@ import (
 
 	"github.com/golang/protobuf/proto"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	"github.com/mosuka/cete/marshaler"
-	"github.com/mosuka/cete/protobuf"
+	"github.com/vniche/cete/marshaler"
+	"github.com/vniche/cete/protobuf"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
