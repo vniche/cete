@@ -50,6 +50,9 @@ jobs:
 
       - name: untar dist.tar.gz
         run: |
+          if [ ! -d "$(PWD)/bin" ]; then
+            mkdir bin
+          fi
           tar -xzvf distribution/dist.tar.gz -C bin
           rm -rf distribution/
 
