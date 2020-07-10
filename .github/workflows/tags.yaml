@@ -87,7 +87,7 @@ jobs:
         run: |
           for dist_file in $(ls dist);
           do
-            (cd dist && tar -czvf ../$$(basename -- "$${dist_file%.*}").tar.gz $$dist_file) || exit 1
+            (cd dist && tar -czvf ../$(basename -- "${dist_file%.*}").tar.gz $dist_file) || exit 1
           done
 
       - name: create release
