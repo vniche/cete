@@ -23,7 +23,9 @@ jobs:
             ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
 
       - name: build
-        run: make build
+        run: |
+          go install github.com/mitchellh/gox
+          make build
 
       - name: compress build binary
         run: |
