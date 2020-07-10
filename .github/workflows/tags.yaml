@@ -85,10 +85,12 @@ jobs:
 
       - name: create dists .tar.gz
         run: |
+          tar -xzvf distribution/dist.tar.gz
           for dist_file in $(ls dist);
           do
             (cd dist && tar -czvf ../$(basename -- "${dist_file%.*}").tar.gz $dist_file) || exit 1
           done
+          rm -rf distribution/ dist/
 
       - name: create release
         id: create_release
@@ -107,7 +109,7 @@ jobs:
           for asset in $(ls *.tar.gz); do
             assets+=("-a" "$asset")
           done
-          tag_name="${GITHUB_REF##*/}"
+          tag_name=$(basename $GITHUB_REF)
           hub release create "${assets[@]}" -m "$tag_name" "$tag_name"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
