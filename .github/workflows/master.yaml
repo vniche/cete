@@ -50,7 +50,7 @@ jobs:
 
       - name: untar dist.tar.gz
         run: |
-          tar -xzvf distribution/build.tar.gz
+          tar -xzvf distribution/dist.tar.gz
           rm -rf distribution/
 
       - name: build docker image
