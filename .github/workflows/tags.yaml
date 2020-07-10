@@ -85,21 +85,12 @@ jobs:
 
       - name: create dists .tar.gz
         run: |
+          tar -xzvf distribution/dist.tar.gz
           for dist_file in $(ls dist);
           do
-            (cd dist && tar -czvf ../$$(basename -- "$${dist_file%.*}").tar.gz $$dist_file) || exit 1
+            (cd dist && tar -czvf ../$(basename -- "${dist_file%.*}").tar.gz $dist_file) || exit 1
           done
-
-      - name: create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
+          rm -rf distribution/ dist/
 
       - run: |
           set -x
@@ -107,7 +98,7 @@ jobs:
           for asset in $(ls *.tar.gz); do
             assets+=("-a" "$asset")
           done
-          tag_name="${GITHUB_REF##*/}"
+          tag_name=$(basename $GITHUB_REF)
           hub release create "${assets[@]}" -m "$tag_name" "$tag_name"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
