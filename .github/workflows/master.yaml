@@ -27,7 +27,7 @@ jobs:
 
       - name: compress build binary
         run: |
-          cd bin && tar -czvf dist.tar.gz cete
+          cd bin && tar -czvf ../dist.tar.gz cete
 
       - name: upload compressed dist to artifacts
         uses: actions/upload-artifact@v1
