@@ -59,7 +59,9 @@ jobs:
           rm -rf distribution/
 
       - name: build docker image
-        run: docker build . --file Dockerfile --tag $(dirname $GITHUB_REPOSITORY)/$(basename $GITHUB_REPOSITORY):${{ github.sha }}
+        run: |
+          docker build . --file Dockerfile --tag $(dirname $GITHUB_REPOSITORY)/$(basename $GITHUB_REPOSITORY)
+          docker tag $(dirname $GITHUB_REPOSITORY)/$(basename $GITHUB_REPOSITORY) $(dirname $GITHUB_REPOSITORY)/$(basename $GITHUB_REPOSITORY):${{ github.sha }}
 
       - name: log into docker registry
         run: echo "${{ secrets.DOCKER_PSW }}" | docker login -u ${{ secrets.DOCKER_USR }} --password-stdin
@@ -67,4 +69,5 @@ jobs:
       - name: push image to docker registry
         run: |
           # pushes unique commit sha based tag
+          docker push $(dirname $GITHUB_REPOSITORY)/$(basename $GITHUB_REPOSITORY)
           docker push $(dirname $GITHUB_REPOSITORY)/$(basename $GITHUB_REPOSITORY):${{ github.sha }}
