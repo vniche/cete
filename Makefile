@@ -34,7 +34,10 @@ ifeq ($(GOOS),windows)
   BIN_EXT = .exe
 endif
 
-GO := GOOS=$(GOOS) GOARCH=$(GOARCH) CGO_ENABLED=$(CGO_ENABLED) CGO_CFLAGS=$(CGO_CFLAGS) CGO_LDFLAGS=$(CGO_LDFLAGS) GO111MODULE=$(GO111MODULE) go
+BUILD_FLAGS := GOOS=$(GOOS) GOARCH=$(GOARCH) CGO_ENABLED=$(CGO_ENABLED) CGO_CFLAGS=$(CGO_CFLAGS) CGO_LDFLAGS=$(CGO_LDFLAGS) GO111MODULE=$(GO111MODULE)
+
+GO := $(BUILD_FLAGS) go
+GOX := $(BUILD_FLAGS) gox
 
 .DEFAULT_GOAL := build
 
@@ -90,7 +93,7 @@ clean: show-env
 build: show-env
 	@echo ">> building binaries"
 	mkdir -p bin
-	gox -osarch="$(GOOS)/amd64" -tags="$(BUILD_TAGS)" $(LDFLAGS) -output bin/cete
+	$(GOX) -osarch="$(GOOS)/amd64" -tags="$(BUILD_TAGS)" $(LDFLAGS) -output bin/cete
 
 .PHONY: install
 install: show-env
@@ -101,7 +104,7 @@ install: show-env
 dist: show-env
 	@echo ">> packaging binaries"
 	mkdir dist
-	gox -osarch="linux/amd64" -osarch="darwin/amd64" -osarch="windows/amd64" -tags="$(BUILD_TAGS)" $(LDFLAGS) -output "dist/{{.Dir}}_{{.OS}}_{{.Arch}}"
+	$(GOX) -osarch="linux/amd64" -osarch="darwin/amd64" -osarch="windows/amd64" -tags="$(BUILD_TAGS)" $(LDFLAGS) -output "dist/{{.Dir}}_{{.OS}}_{{.Arch}}"
 
 .PHONY: list-tag
 list-tag:
