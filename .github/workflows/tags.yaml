@@ -25,7 +25,7 @@ jobs:
       - name: create multiple OS dists
         run: |
           go install github.com/mitchellh/gox
-          make dist
+          VERSION=$(basename $GITHUB_REF) make dist
 
       - name: compress build binary
         run: |
