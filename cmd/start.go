@@ -6,7 +6,6 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
 
 	"github.com/mitchellh/go-homedir"
 	"github.com/mosuka/cete/client"
@@ -77,10 +76,6 @@ var (
 			}
 
 			if err := grpcGateway.Start(); err != nil {
-				return err
-			}
-
-			if err := raftServer.WaitForDetectLeader(60 * time.Second); err != nil {
 				return err
 			}
 
