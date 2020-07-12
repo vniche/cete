@@ -50,9 +50,7 @@ var (
 				logCompress,
 			)
 
-			bootstrap := peerGrpcAddress == "" || peerGrpcAddress == grpcAddress
-
-			raftServer, err := server.NewRaftServer(id, raftAddress, dataDirectory, bootstrap, logger)
+			raftServer, err := server.NewRaftServer(id, raftAddress, dataDirectory, logger)
 			if err != nil {
 				return err
 			}
@@ -82,23 +80,11 @@ var (
 				return err
 			}
 
-			// wait for detect leader if it's bootstrap
-			if bootstrap {
-				timeout := 60 * time.Second
-				if err := raftServer.WaitForDetectLeader(timeout); err != nil {
-					return err
-				}
+			if err := raftServer.WaitForDetectLeader(60 * time.Second); err != nil {
+				return err
 			}
 
-			// create gRPC client for joining node
-			var joinGrpcAddress string
-			if bootstrap {
-				joinGrpcAddress = grpcAddress
-			} else {
-				joinGrpcAddress = peerGrpcAddress
-			}
-
-			c, err := client.NewGRPCClientWithContextTLS(joinGrpcAddress, context.Background(), certificateFile, commonName)
+			c, err := client.NewGRPCClientWithContextTLS(peerGrpcAddress, context.Background(), certificateFile, commonName)
 			if err != nil {
 				return err
 			}

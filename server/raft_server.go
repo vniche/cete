@@ -25,7 +25,6 @@ type RaftServer struct {
 	id            string
 	raftAddress   string
 	dataDirectory string
-	bootstrap     bool
 	logger        *zap.Logger
 
 	fsm *RaftFSM
@@ -39,7 +38,7 @@ type RaftServer struct {
 	applyCh chan *protobuf.Event
 }
 
-func NewRaftServer(id string, raftAddress string, dataDirectory string, bootstrap bool, logger *zap.Logger) (*RaftServer, error) {
+func NewRaftServer(id string, raftAddress string, dataDirectory string, logger *zap.Logger) (*RaftServer, error) {
 	fsmPath := filepath.Join(dataDirectory, "kvs")
 	fsm, err := NewRaftFSM(fsmPath, logger)
 	if err != nil {
@@ -51,7 +50,6 @@ func NewRaftServer(id string, raftAddress string, dataDirectory string, bootstra
 		id:            id,
 		raftAddress:   raftAddress,
 		dataDirectory: dataDirectory,
-		bootstrap:     bootstrap,
 		fsm:           fsm,
 		logger:        logger,
 
@@ -134,7 +132,7 @@ func (s *RaftServer) Start() error {
 		return err
 	}
 
-	if s.bootstrap {
+	if s.raft.Leader() == "" {
 		configuration := raft.Configuration{
 			Servers: []raft.Server{
 				{
