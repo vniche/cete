@@ -132,11 +132,7 @@ func (s *RaftServer) Start() error {
 		return err
 	}
 
-	leader, err := s.LeaderAddress(20 * time.Second)
-	if err != nil {
-		return err
-	}
-
+	leader, _ := s.LeaderAddress(20 * time.Second)
 	if leader == "" {
 		configuration := raft.Configuration{
 			Servers: []raft.Server{
